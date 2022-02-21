@@ -1,0 +1,37 @@
+# Please edit the object below. Lines beginning with a '#' will be ignored,
+# and an empty file will abort the edit. If an error occurs while saving this file will be
+# reopened with the relevant failures.
+#
+apiVersion: v1
+kind: Service
+metadata:
+  creationTimestamp: "2022-02-18T18:33:15Z"
+  labels:
+    app: hello-app
+  name: hello-app-service
+  namespace: default
+  resourceVersion: "19191"
+  uid: 6f5f5f43-37ff-4434-8005-2bb39320798d
+spec:
+  allocateLoadBalancerNodePorts: true
+  clusterIP: 10.98.198.245
+  clusterIPs:
+  - 10.98.198.245
+  externalTrafficPolicy: Cluster
+  internalTrafficPolicy: Cluster
+  ipFamilies:
+  - IPv4
+  ipFamilyPolicy: SingleStack
+  ports:
+  - nodePort: 30023
+    port: 80
+    protocol: TCP
+    targetPort: 8080
+  selector:
+    app: hello-app
+  sessionAffinity: None
+  type: LoadBalancer
+status:
+  loadBalancer:
+    ingress:
+    - hostname: localhost

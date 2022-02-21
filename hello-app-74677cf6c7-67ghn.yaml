@@ -1,0 +1,111 @@
+# Please edit the object below. Lines beginning with a '#' will be ignored,
+# and an empty file will abort the edit. If an error occurs while saving this file will be
+# reopened with the relevant failures.
+#
+apiVersion: v1
+kind: Pod
+metadata:
+  creationTimestamp: "2022-02-18T18:29:25Z"
+  generateName: hello-app-74677cf6c7-
+  labels:
+    app: hello-app
+    pod-template-hash: 74677cf6c7
+  name: hello-app-74677cf6c7-67ghn
+  namespace: default
+  ownerReferences:
+  - apiVersion: apps/v1
+    blockOwnerDeletion: true
+    controller: true
+    kind: ReplicaSet
+    name: hello-app-74677cf6c7
+    uid: abc48579-a690-4be0-a4c1-e2759f8e9581
+  resourceVersion: "18898"
+  uid: 77e00798-a97a-4ed8-9743-4f9514a49149
+spec:
+  containers:
+  - image: hello-app:v1
+    imagePullPolicy: IfNotPresent
+    name: hello-app
+    resources: {}
+    terminationMessagePath: /dev/termination-log
+    terminationMessagePolicy: File
+    volumeMounts:
+    - mountPath: /var/run/secrets/kubernetes.io/serviceaccount
+      name: kube-api-access-dkjjt
+      readOnly: true
+  dnsPolicy: ClusterFirst
+  enableServiceLinks: true
+  nodeName: docker-desktop
+  preemptionPolicy: PreemptLowerPriority
+  priority: 0
+  restartPolicy: Always
+  schedulerName: default-scheduler
+  securityContext: {}
+  serviceAccount: default
+  serviceAccountName: default
+  terminationGracePeriodSeconds: 30
+  tolerations:
+  - effect: NoExecute
+    key: node.kubernetes.io/not-ready
+    operator: Exists
+    tolerationSeconds: 300
+  - effect: NoExecute
+    key: node.kubernetes.io/unreachable
+    operator: Exists
+    tolerationSeconds: 300
+  volumes:
+  - name: kube-api-access-dkjjt
+    projected:
+      defaultMode: 420
+      sources:
+      - serviceAccountToken:
+          expirationSeconds: 3607
+          path: token
+      - configMap:
+          items:
+          - key: ca.crt
+            path: ca.crt
+          name: kube-root-ca.crt
+      - downwardAPI:
+          items:
+          - fieldRef:
+              apiVersion: v1
+              fieldPath: metadata.namespace
+            path: namespace
+status:
+  conditions:
+  - lastProbeTime: null
+    lastTransitionTime: "2022-02-18T18:29:25Z"
+    status: "True"
+    type: Initialized
+  - lastProbeTime: null
+    lastTransitionTime: "2022-02-18T18:29:27Z"
+    status: "True"
+    type: Ready
+  - lastProbeTime: null
+    lastTransitionTime: "2022-02-18T18:29:27Z"
+    status: "True"
+    type: ContainersReady
+  - lastProbeTime: null
+    lastTransitionTime: "2022-02-18T18:29:25Z"
+    status: "True"
+    type: PodScheduled
+  containerStatuses:
+  - containerID: docker://7703626d43288527d2c0d78f7880a637a822609a4623cb5cfc9125961f8e1e13
+    image: hello-app:latest
+    imageID: docker://sha256:536497a13b62be6381ff3cd1be40a0f0b20c4b653fe1aaa91d84a5e1a3e66a8a
+    lastState: {}
+    name: hello-app
+    ready: true
+    restartCount: 0
+    started: true
+    state:
+      running:
+        startedAt: "2022-02-18T18:29:26Z"
+  hostIP: 192.168.65.4
+  phase: Running
+  podIP: 10.1.0.9
+  podIPs:
+  - ip: 10.1.0.9
+  qosClass: BestEffort
+  startTime: "2022-02-18T18:29:25Z"
